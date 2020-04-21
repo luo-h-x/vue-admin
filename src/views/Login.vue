@@ -1,4 +1,5 @@
 <template>
+<div style="overflow: hidden;">
   <div class="container">
     <h3>欢迎登录</h3>
     <el-form ref="form" label-width="80px" :model="form">
@@ -26,12 +27,12 @@
       <el-button type="primary" @click="submitForm('form')">登录</el-button>
     </el-form>
     <el-alert
-      show-icon
-      style="margin-top: 20px"
-      title="username:  admin password: any"
-      type="info">
-  </el-alert>
+      title="用户名: admin 密码: any"
+      type="info"
+      close-text="知道了">
+    </el-alert>
   </div>
+</div>
 </template>
 
 <script>
@@ -63,7 +64,7 @@ export default {
               this.$message({
                 message: res.data.message,
                 type: 'success',
-                duration: 1000
+                duration: 600
               })
               this.$router.push('/Home')
             } else {
@@ -102,18 +103,16 @@ export default {
   margin: 150px auto 0;
   padding: 20px;
   width: 500px;
-  height: 300px;
+  height: 320px;
   border: 1px solid #ebeef5;
   border-radius: 20px;
   box-shadow: 0 0 20px #ebeef5;
 }
-/* .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: #889aa4;
-    cursor: pointer;
-    user-select: none;
-  } */
+h3 {
+  text-align: center;
+}
+.el-button {
+  width: calc(100% - 80px);
+  margin: 0 80px 20px 80px;
+}
 </style>
