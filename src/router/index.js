@@ -9,6 +9,7 @@ import ToolTip from '../components/ToolTip'
 import Info from '../components/Info'
 import Carousel from '../components/Carousel'
 import Icon from '../components/Icon'
+import Calendar from '../components/Calendar'
 
 Vue.use(Vuerouter)
 
@@ -21,13 +22,18 @@ export const routes = [
     path: '/Home',
     component: Home,
     children: [
+      {
+        path: '/',
+        component: Button
+      },
       { path: '/Button', component: Button },
       { path: '/Form', component: Form },
       { path: '/Loading', component: Loading },
       { path: '/ToolTip', component: ToolTip },
       { path: '/Info', component: Info },
       { path: '/Carousel', component: Carousel },
-      { path: '/Icon', component: Icon }]
+      { path: '/Icon', component: Icon },
+      { path: '/Calendar', component: Calendar }]
   },
   { path: '/Login', component: Login }
 ]
