@@ -1,8 +1,8 @@
 <template>
   <div style="height: 100%; overflow: hidden">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+      <el-breadcrumb-item>首页</el-breadcrumb-item>
+      <el-breadcrumb-item><a >活动管理</a></el-breadcrumb-item>
       <el-breadcrumb-item>活动列表</el-breadcrumb-item>
       <el-breadcrumb-item>活动详情</el-breadcrumb-item>
       <el-dropdown>
@@ -18,7 +18,9 @@
       <div class="main-show">
         <div class="nav_ui">
           <ul>
-            <li v-for="(v, i) in list" :key="i"><router-link :to="v.path">{{v.name}}</router-link></li>
+            <li v-for="(v, i) in list" :key="i" @click="cactive(i)" >
+              <router-link :to="v.path" :class="{active: i == active}">{{v.name}}</router-link>
+            </li>
           </ul>
         </div>
         <router-view/>
@@ -40,7 +42,13 @@ export default {
         { name: '弹窗提示', path: '/ToolTip' },
         { name: '日历', path: '/Calendar' },
         { name: 'icon图标', path: 'Icon' }
-      ]
+      ],
+      active: 0
+    }
+  },
+  methods: {
+    cactive (index) {
+      this.active = index
     }
   }
 }
@@ -104,5 +112,8 @@ export default {
 }
 .el-scrollbar{
   height: calc(100% - 80px);
+}
+.main-show .nav_ui .active {
+  color: #409eff;
 }
 </style>
